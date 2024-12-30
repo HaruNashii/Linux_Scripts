@@ -1,5 +1,9 @@
-KEYBIND="org.gnome.desktop.wm.keybindings"
+#!/bin/bash
 
+
+
+if command -v gsettings &> /dev/null; then
+KEYBIND="org.gnome.desktop.wm.keybindings"
 # to see all gsettings list-keys org.gnome.desktop.wm.keybindings
 #[CONFIGURE]    [TYPE]    [WHAT IT WILL DO]     [WHAT KEY TO BIND]
 
@@ -52,3 +56,6 @@ gsettings set "$KEYBIND" "minimize" "['<Super>s']"
 # minimize all apps in the current workspace (Windows + Shift + S)
 gsettings set "$KEYBIND" "show-desktop" "['<Super><Shift>s']"
 
+else
+	echo "the command gsettings was not found, are you sure you are in GNOME?"
+fi
