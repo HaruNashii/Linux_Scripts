@@ -1,5 +1,9 @@
-# install nvidia drivers
-sudo pacman -S --needed nvidia nvidia-utils lib32-nvidia-utils nvidia-setting vulkan-icd-loader egl-wayland
+if command -v pacman &> /dev/null; then
+	# install nvidia drivers
+	sudo pacman -S --needed nvidia nvidia-utils lib32-nvidia-utils nvidia-setting vulkan-icd-loader egl-wayland
+else
+	echo "pacman package manager not found, this script doesn't support others distro YET!!!, executing only configs"
+fi
 
 # change the nvidia kernel module to support wayland
 # necessary to use (gnome on wayland/hyprland, etc)
