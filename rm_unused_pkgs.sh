@@ -2,17 +2,6 @@
 
 
 
-if command -v flatpak &> /dev/null; then
-	FlatpakCheck=$(flatpak uninstall --unused)
-
-	if [ "$FlatpakCheck" = "Nothing unused to uninstall" ]; then
-		clear && echo "No Flatpak Unused Packages To Remove. :3"
-    	else 
-      		flatpak uninstall --unused
-      		clear && echo "Unused Packages Removed. Yippe!"
-    	fi
-fi
-
 if command -v apt &> /dev/null; then 
 	sudo apt-get autoremove
 	clear && echo "Unused Packages Removed. Yippe!"
@@ -26,6 +15,19 @@ fi
 
 if command -v pacman &> /dev/null; then 
 	PkgsToRm=$(sudo pacman -Qdtq)
+	LibsToRm=$(sudo pacman -Qqd)
+
+	sudo pacman -Sc --noconfirm
+	sudo pacman -Scc --noconfirm
+	sudo rm -rf $HOME/.cache/*
+
+	if [ ${#LibsToRm} -ge 2 ]; then
+		sudo pacman -Qqd | sudo pacman -Rsu --noconfirm -
+		clear && echo "Unused Libs Removed. Yippe!"
+	else 
+		echo "No Pacman Unused Libs To Remove. :3"
+	fi
+
 
 	if [ ${#PkgsToRm} -ge 2 ]; then
 		sudo pacman -Rsn $PkgsToRm
@@ -56,3 +58,15 @@ if command -v paru &> /dev/null; then
     		echo "No Paru Unused Packages To Remove. :3"
     	fi
 fi
+
+if command -v flatpak &> /dev/null; then
+	FlatpakCheck=$(flatpak uninstall --unused)
+
+	if [ "$FlatpakCheck" = "Nothing unused to uninstall" ]; then
+		echo "No Flatpak Unused Packages To Remove. :3"
+    	else 
+      		flatpak uninstall --unused
+      		clear && echo "Unused Packages Removed. Yippe!"
+    	fi
+fi
+
