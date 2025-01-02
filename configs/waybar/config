@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+    "modules-left": ["hyprland/workspaces",],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio#output", "pulseaudio#input"],
+    "clock": {
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "format-alt": "  {:%a, %d %b %Y}",
+      "format": "  {:%H:%M}",
+    },
+    "tray": {
+	"icon-size": 20,
+        "spacing": 10
+    },
+    "pulseaudio#input": {
+    	"format-source": " {volume}%",
+    	"format-source-muted": "  off",
+    	"format": "{format_source}",
+    	"scroll-step": 1,
+    	"smooth-scrolling-threshold": 1,
+    	"max-volume": 100,
+    	"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    	"on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+    	"on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
+    },
+    "pulseaudio#output": {
+    	"format": "{icon}  {volume}%",
+    	"format-muted": " off",
+    	"format-icons": {
+    	    "default": ["", "", ""]
+    	},
+    	"max-volume": 200,
+    	"scroll-step": 5,
+    	"smooth-scrolling-threshold": 1,
+    	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    },
+    "network": {
+      "interface": "wlan0",
+      "format": "Online",
+      "format-wifi": "  Online",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "format-disconnected": "󰖪  Offline",
+      "tooltip": false,
+    },
+    "hyprland/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+		"1" : "",
+		"2" : "",
+		"3" : "",
+		"4" : "",
+		"5" : "",
+		"active": "",
+		"default": ""
+	},
+    	"on-scroll-up": "hyprctl dispatch workspace e-1",
+    	"on-scroll-down": "hyprctl dispatch workspace e+1",
+    }
+}
