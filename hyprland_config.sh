@@ -2,6 +2,9 @@
 
 
 
+# limpa o terminal
+clear
+
 # instala o hyprland, o terminal e o aplicativo de papel de parede do hyprland
 if command -v dnf &> /dev/null; then
 	sudo dnf install hyprland alacritty hyprpaper xdg-desktop-portal-hyprland grim slurp playerctl
