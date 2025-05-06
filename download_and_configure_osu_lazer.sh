@@ -60,3 +60,6 @@ fi
 
 # volta para a pasta principal do usuario
 cd $HOME
+
+# mostra um texto no terminal avisando que o script terminou de rodar :)
+echo "Script Finalizado e osu baixado :3"
