@@ -1,13 +1,15 @@
 #!/bin/bash
 
 
-
 # limpa o terminal
 clear
 
 # instala o hyprland, o terminal e o aplicativo de papel de parede do hyprland
 if command -v dnf &> /dev/null; then
-	sudo dnf install hyprland alacritty hyprpaper xdg-desktop-portal-hyprland grim slurp playerctl
+	# ativa o repositorio bleeding edge do hyprland
+	sudo dnf copr enable solopasha/hyprland
+	# instala o hyprland e seus utilitarios
+	sudo dnf install hyprland alacritty hyprpaper xdg-desktop-portal-hyprland grim slurp playerctl waybar
 else 
 	echo "comando DNF nao encontrado????, wtf voces nao estavam usando o Fedora???"
 fi 
