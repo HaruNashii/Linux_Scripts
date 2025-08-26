@@ -28,7 +28,7 @@ cd $tmp_working_directory
 if [ ! -d "$steam_proton_folder$proton_ge_version" ]; then
     if [ ! -f "$tmp_working_directory/$proton_ge_version_tar_file" ]; then
 	# mostra um texto no terminal avisando que o Download do proton-ge comecou
-        echo "Downloading Proton-GE, Please Wait..."
+        echo "Downloading $proton_ge_version, Please Wait..."
 	# baixa a ultima versao do proton ge, usando o comando "curl"
         curl -sLOJ $file_to_download
     fi 
@@ -51,6 +51,8 @@ else
     # limpa as mensagens antigas do terminal
     clear
 
+    # mostra um texto no terminal avisando que o proton-ge esta instalado
+    echo "$proton_ge_version Installed!"
     # mostra um texto no terminal avisando que todo o processo foi concluido
     echo "All done :3"
 fi
