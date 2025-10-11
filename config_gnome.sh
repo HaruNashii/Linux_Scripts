@@ -58,6 +58,8 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 # make gnome have 5 workspace
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
 
+clear && echo "All Done!!!! Yayyy!!"
+
 else
 	echo "the command gsettings was not found, are you sure you are in GNOME?"
 fi
