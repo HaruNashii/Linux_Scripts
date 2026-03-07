@@ -52,7 +52,7 @@ if command -v paru &> /dev/null; then
 	ParuPkgsToRm=$(paru -Qdtq)
 
 	if [ ${#ParuPkgsToRm} -ge 2 ]; then
-    		yay -Rsn $ParuPkgsToRm
+    		paru -Rsn $ParuPkgsToRm
     	  	clear && echo "Unused Packages Removed. Yippe!"
     	else
     		echo "No Paru Unused Packages To Remove. :3"
